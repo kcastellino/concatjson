@@ -22,8 +22,8 @@
   },
   "homepage": "https://github.com/manidlou/concatjson#readme",
   "dependencies": {
-    "split2": "^2.1.1",
-    "through2": "^2.0.3"
+    "split2": "^3.2.2",
+    "through2": "^3.0.2"
   },
   "devDependencies": {
     "standard": "^17.1.0",
