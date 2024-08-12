@@ -1,5 +1,5 @@
 'use strict'
-const thru = require('through2')
+const { Transform } = require('stream')
 const split = require('split2')
 
 function parse () {
@@ -38,11 +38,14 @@ function parse () {
 }
 
 function serialize () {
-  return thru.obj((chunk, enc, cb) => {
-    try {
-      return cb(null, JSON.stringify(chunk))
-    } catch (err) {
-      return cb(err)
+  return new Transform({
+    objectMode: true,
+    transform (chunk, enc, cb) {
+      try {
+        return cb(null, JSON.stringify(chunk))
+      } catch (err) {
+        return cb(err)
+      }
     }
   })
 }
